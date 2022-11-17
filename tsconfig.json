@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "target": "es6",
+    "allowJs": true,
+    "pretty": true,
+    "watch":true,
+    "watchFile": "useFsEvents",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+  },
+  "files": [
+    "app.ts",
+  ],
+  "watchOptions": {
+    "excludeFiles": ["**/node_modules","./dist"]
+  }
+}

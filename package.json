@@ -16,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/paul-ooi/YNAB/issues"
   },
-  "homepage": "https://github.com/paul-ooi/YNAB#readme"
+  "homepage": "https://github.com/paul-ooi/YNAB#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
+    "eslint": "^8.27.0",
+    "typescript": "^4.1.6"
+  },
+  "dependencies": {
+    "node-typescript": "^0.1.3"
+  }
 }
