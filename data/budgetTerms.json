@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Budget1",
+    "category": 1
+  },
+  {
+    "id": 2,
+    "name": "Budget2",
+    "category": 1
+  },
+  {
+    "id": 3,
+    "name": "Budget3",
+    "category": 1
+  },
+  {
+    "id": 4,
+    "name": "Budget4",
+    "category": 2
+  },
+  {
+    "id": 5,
+    "name": "Budget5",
+    "category": 3
+  },
+  {
+    "id": 6,
+    "name": "Budget6",
+    "category": 3
+  }
+]

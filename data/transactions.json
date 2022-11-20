@@ -1,20 +1,29 @@
 [
   {
-    "account": {
-      "id": 1,
-      "name": "accountName"
-    },
-    "category": {
-        "id": 1,
-        "name": "categoryName"
-    },
-    "payee": {
-      "id":1,
-      "name": "payeeName"
-    },
+    "type": "single",
+    "from": 1,
+    "to": 1,
+    "budget": 1,
     "date": 1666396800000,
-    "memo": "notes about transaction",
-    "amount": 12345.89,
-    "subTransactions": []
+    "amount": 12345.89
+  },
+  {
+    "type": "transfer",
+    "from": 1,
+    "to": 2,
+    "budget": 2,
+    "date": 1666996800000,
+    "amount": 342.89
+  },
+  {
+    "type": "split",
+    "from": 3,
+    "to": 3,
+    "budget": 2,
+    "date": 1666396800000,
+    "amount": 123,
+    "subTransactions": [{
+      
+    }]
   }
 ]
