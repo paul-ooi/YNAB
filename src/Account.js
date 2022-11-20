@@ -1,10 +1,17 @@
 import BaseClass from './BaseClass.js';
+import accounts from '../data/accounts.json' assert {type: 'json'};
+
 export default class Account extends BaseClass {
 
-  constructor(account){
+  constructor(accountId){
     super();
-    this.id = account.id
-    this.name = account.name
+    this.id = accountId
+  }
+
+  static getById(id) {
+    for (const account of accounts) {
+      if (account.id == id) return account
+    }
   }
 
 }

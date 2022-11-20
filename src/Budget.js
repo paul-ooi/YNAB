@@ -1,10 +1,19 @@
 import BaseClass from './BaseClass.js';
+import budgetTerms from '../data/budgetTerms.json' assert {type: 'json'};
+
+// import budgets from '../data/accounts.json' assert {type: 'json'};
+
 export default class Budget extends BaseClass {
 
-  constructor(budget){
+  constructor(budgetId){
     super();
-    this.id = budget.id
-    this.name = budget.name
+    this.id = budgetId
+  }
+
+  static getById(id) {
+    for (const budget of budgetTerms) {
+      if (budget.id == id) return budget
+    }
   }
 
 }

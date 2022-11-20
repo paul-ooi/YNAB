@@ -1,16 +1,18 @@
 import Account from './Account.js';
 import Budget from './Budget.js';
+import Payee from './Payee.js';
 import Category from './Category.js';
 
 class Transaction {
   constructor(transaction) {
-    this.account = new Account(transaction.account)
-    this.budget = new Budget(transaction.budget)
-    this.category = new Category(transaction.category)
-    this.memo = transaction.memo
+    this.type = transaction.type
+    this.account = Account.getById(transaction.from)
+    this.payee = Payee.getById(transaction.to)
+    this.budget = Budget.getById(transaction.budget)
+    // this.memo = transaction.memo
     this.date = transaction.date
     this.amount = transaction.amount
-    this.subTransactions = transaction.subTransactions
+    // this.subTransactions = transaction.subTransactions
   }
 }
 export default Transaction;
