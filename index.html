@@ -1,44 +1,36 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>YNAB</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>weNAB</title>
+    <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
-    <div class="container home-page">
-      <div class="jumbotron">
-        <div class="row">
-          <a href="app.html">
-            <img src="screenshot.png" alt="screenshot" class="img-rounded screenshot" />
-          </a>
-        </div>
-        <h1>YNAB on the web</h1>
-        <p class="lead">
-          Ever wanted to check your YNAB data on the web? Look no further! With this application you can view and filter your transaction log if you have it synced with Dropbox.
-        </p>
-        <p><a class="btn btn-lg btn-success" href="app.html">Sign in with Dropbox</a></p>
-      </div>
-      <div class="row">
-        <div class="col-lg-6">
-          <h4>How does this work?</h4>
-          <p>If you are syncing your YNAB data with Dropbox, then by giving this application the permission to access your data on Dropbox, it can read the same data that the official YNAB application uses.</p>
-        </div>
-        <div class="col-lg-6">
-          <h4>Is this safe?</h4>
-          <p>This app uses the <a href="https://www.dropbox.com/developers/datastore/sdks/js">Dropbox JavaScript SDK</a>, so all the communication happens in the browser, which means none of your data goes through this server.</p>
-        </div>
-      </div>
-      <div class="footer">
-        <hr />
-        <a href="http://ihaochi.com">haochi</a> made this &middot;
-        find it on <a href="https://github.com/haochi/YNAB">github</a> &middot;
-        doesn't work? let <a href="http://twitter.com/haochi">@haochi</a> know!
-        <br/>
-        disclaimer: YNAB is a trademark of Steine LLC and this project has no affiliation to YNAB or Steine LLC
-      </div>
-    </div>
+    <h1>We Need a Budget</h1>
+    <table>
+      <thead>
+        <th>Date</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Budget</th>
+        <th>OutFlow</th>
+        <th>Inflow</th>
+      </thead>
+      <tbody>
+        <template id="rowTemplate">
+          <tr>
+            <td class="cell__date"><time datetime=""></time></td>
+            <td class="cell__from"></td>
+            <td class="cell__to"></td>
+            <td class="cell__budget"></td>
+            <td class="cell__outflow"></td>
+            <td class="cell__inflow"></td>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+    <script type="module" src="./../app.js"></script>
   </body>
 </html>
