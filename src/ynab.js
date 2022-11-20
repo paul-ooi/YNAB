@@ -22,16 +22,19 @@ function App(settings){
     }, {}).value()
   })
 
+  // totals of everything
   self.netWorth = ko.computed(function() {
     return _.reduce(self.transaction.transactions(), function(sum, transaction){
       return sum + transaction.amount;
     }, 0);
   })
 
+  // get account balances
   self.accountBalance = function(accountId){
     return accountBalance()[accountId] || 0;
   }
 
+  // Loads budget details
   client.authenticate().then(function(){
     client.loadJson(rootFile).then(function(root){
       self.budget.budgets(root.relativeKnownBudgets);
