@@ -25,7 +25,29 @@ export default class TransactionView {
    */
   static addRowToTable(row, tbodySelector) {
     const tbody = document.querySelector(tbodySelector);
-    tbody.appendChild(row);    
+    const modifiedRow = TransactionView.addTransactionCheckbox(row, tbody.rows.length)
+    tbody.appendChild(modifiedRow);    
+  }
+
+  /**
+   * Add a unique checkbox for this row to act as a toggle for other components
+   * @param {HTMLTableRowElement} row 
+   * @param {number} index row index to assign
+   */
+  static addTransactionCheckbox(row, index) {
+    const td = document.createElement('td');
+    const label = document.createElement('label');
+    const input = document.createElement('input');
+    td.classList.add('cell__modify')
+    label.setAttribute('for',`select__row--${index}`)
+    label.textContent = 'Select Transaction'
+    input.setAttribute('name',`select__row--${index}`)
+    input.setAttribute('id',`select__row--${index}`)
+    input.setAttribute('type','checkbox')
+    td.appendChild(label)
+    td.appendChild(input)
+    row.firstChild.insertBefore(td, row.firstChild.children[0])
+    return row
   }
 
 
