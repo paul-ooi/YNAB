@@ -6,3 +6,11 @@ td {
   text-align: center;
   padding: 0.5em;
 }
+
+.cell__outflow {
+  color: red;
+}
+
+.cell__inflow {
+  color: green;
+}
