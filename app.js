@@ -9,3 +9,4 @@ data.forEach((transaction)=> {
   const row = TransactionView.createTransactionRow(t)
   TransactionView.addRowToTable(row, 'tbody')
 })
+TransactionView.addListenerOnCheckboxes()

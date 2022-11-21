@@ -41,7 +41,7 @@ export default class TransactionView {
     td.classList.add('cell__modify')
     label.setAttribute('for',`select__row--${index}`)
     label.textContent = 'Select Transaction'
-    input.setAttribute('name',`select__row--${index}`)
+    input.setAttribute('name',`select__row`)
     input.setAttribute('id',`select__row--${index}`)
     input.setAttribute('type','checkbox')
     td.appendChild(label)
@@ -50,5 +50,26 @@ export default class TransactionView {
     return row
   }
 
-
+  static addListenerOnCheckboxes () {
+    const checkboxes = document.querySelectorAll('[name="select__row"]')
+    checkboxes.forEach((cb)=>{
+      cb.addEventListener('change', ()=>{
+        const selectedChecks = document.querySelectorAll('[name="select__row"]:checked');
+        if (selectedChecks.length === 1) {
+          // Create Remove button
+          const delButton = document.createElement('button');
+          delButton.setAttribute('type', 'button')
+          delButton.textContent = 'Remove Transaction'
+          delButton.addEventListener('click', ()=>{
+            const body = delButton.closest('tbody');
+            body.deleteRow(delButton.dataset.row)
+          })
+          // Add button to cell
+          const rowIndex = selectedChecks.item(0).closest('tr').rowIndex - 1
+          delButton.dataset.row = rowIndex;
+          selectedChecks.item(0).closest('td').appendChild(delButton)
+        }
+      })
+    })
+  }
 }
