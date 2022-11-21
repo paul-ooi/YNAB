@@ -12,6 +12,7 @@ export default class TransactionView {
     clone.querySelector('time').textContent = Intl.DateTimeFormat('en-CA').format(transactionDetails.date);
     clone.querySelector('.cell__from').textContent = transactionDetails.account.name;
     clone.querySelector('.cell__to').textContent = transactionDetails.payee.name;
+    clone.querySelector('.cell__type').textContent = transactionDetails.type;
     clone.querySelector('.cell__budget').textContent = transactionDetails.budget.name;
     clone.querySelector('.cell__outflow').textContent = Intl.NumberFormat('en-CA', { style: 'currency', currency: 'CAD' }).format(transactionDetails.amount);
     return clone;
@@ -26,4 +27,6 @@ export default class TransactionView {
     const tbody = document.querySelector(tbodySelector);
     tbody.appendChild(row);    
   }
+
+
 }
