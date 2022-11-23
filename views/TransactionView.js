@@ -72,4 +72,11 @@ export default class TransactionView {
       })
     })
   }
+
+  static showTransactionForm(){
+    const formTemplate = document.getElementById('transaction__form');
+    const clone = formTemplate.content.cloneNode(true);
+
+    document.body.appendChild(clone)
+  }
 }

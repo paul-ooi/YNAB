@@ -8,30 +8,87 @@
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
-    <h1>We Need a Budget</h1>
-    <table>
-      <thead>
-        <th>Select/Edit</th>
-        <th>Date</th>
-        <th>From</th>
-        <th>To</th>
-        <th>Type</th>
-        <th>Budget</th>
-        <th>OutFlow</th>
-        <th>Inflow</th>
-      </thead>
-      <tbody>
-        <template id="rowTemplate"><tr>
-            <td class="cell__date"><time datetime=""></time></td>
-            <td class="cell__from"></td>
-            <td class="cell__to"></td>
-            <td class="cell__type"></td>
-            <td class="cell__budget"></td>
-            <td class="cell__outflow"></td>
-            <td class="cell__inflow"></td>
-          </tr></template>
-      </tbody>
-    </table>
+    <header class="|">
+      <h1>We Need a Budget</h1>
+    </header>
+    <main id="main-content">
+      <aside class="summaries">
+        <h2>Account Summaries</h2>
+        <section class="summary">
+          <h3 class="summary__heading">On Budget Accounts</h3>
+          <ul class="summary__accounts">
+            <li class="account"></li>
+            <li class="account"></li>
+            <li class="account"></li>
+          </ul>
+        </section>
+        <section class="summary">
+          <h3 class="summary__heading">Off Budget Accounts</h3>
+          <ul class="summary__accounts">
+            <li class="account"></li>
+            <li class="account"></li>
+            <li class="account"></li>
+          </ul>
+        </section>
+      </aside>
+      <table>
+        <thead>
+          <th>Select/Edit</th>
+          <th>Date</th>
+          <th>From</th>
+          <th>To</th>
+          <th>Type</th>
+          <th>Budget</th>
+          <th>OutFlow</th>
+          <th>Inflow</th>
+        </thead>
+        <tbody>
+          <template id="rowTemplate"><tr>
+              <td class="cell__date"><time datetime=""></time></td>
+              <td class="cell__from"></td>
+              <td class="cell__to"></td>
+              <td class="cell__type"></td>
+              <td class="cell__budget"></td>
+              <td class="cell__outflow"></td>
+              <td class="cell__inflow"></td>
+            </tr></template>
+        </tbody>
+      </table>
+    </main>
+    <template id="transaction__form">
+      <form action="/" method="post">
+        <div class="form__control form__control--date">
+          <label class="form__control-label form__control-label--date" for="date">Transaction Date</label>
+          <input class="form__control-input form__control-input--date" type="date" name="date" id="date">
+        </div>
+        <div class="form__control form__control--type">
+          <label class="form__control-label form__control-label--type" for="type">Transaction Type</label>
+          <input class="form__control-input form__control-input--type" type="radio" name="type" value="single">
+          <input class="form__control-input form__control-input--type" type="radio" name="type" value="multi">
+          <input class="form__control-input form__control-input--type" type="radio" name="type" value="transfer">
+        </div>
+        <div class="form__control form__control--account">
+          <label class="form__control-label form__control-label--account" for="account">Account From</label>
+          <input class="form__control-input form__control-select--account" type="account" name="account" id="account">
+        </div>
+        <div class="form__control form__control--payee">
+          <label class="form__control-label form__control-label--payee" for="payee">Account To/Payee</label>
+          <select class="form__control-input form__control-select--payee" name="payee" id="payee"></select>
+        </div>
+        <div class="form__control form__control--budget">
+          <label class="form__control-label form__control-label--budget" for="budget">Budget</label>
+          <select class="form__control-select form__control-select--budget" name="budget" id="budget"></select>
+        </div>
+        <div class="form__control form__control--outflow">
+          <label class="form__control-label form__control-label--outflow" for="outflow">Outflow</label>
+          <input class="form__control-input form__control-input--outflow" min="0" type="number" name="outflow" id="outflow">
+        </div>
+        <div class="form__control form__control--inflow">
+          <label class="form__control-label form__control-label--inflow" for="inflow">Inflow</label>
+          <input class="form__control-input form__control-input--inflow" min="0" type="number" name="inflow" id="outflow">
+        </div>
+      </form>
+    </template>
     <script type="module" src="./../app.js"></script>
   </body>
 </html>

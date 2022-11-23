@@ -10,3 +10,4 @@ data.forEach((transaction)=> {
   TransactionView.addRowToTable(row, 'tbody')
 })
 TransactionView.addListenerOnCheckboxes()
+TransactionView.showTransactionForm()
