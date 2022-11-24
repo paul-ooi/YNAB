@@ -73,10 +73,13 @@ export default class TransactionView {
     })
   }
 
-  static showTransactionForm(){
-    const formTemplate = document.getElementById('transaction__form');
-    const clone = formTemplate.content.cloneNode(true);
-
-    document.body.appendChild(clone)
+  /**
+   * Add a Close listener to the Dialog Cancel button
+   */
+  static addCloseListenerTransactionForm() {
+    const dialog = document.querySelector('dialog');
+    document.querySelector('dialog button.close').addEventListener('click', () => {
+      dialog.close();
+    })    
   }
 }
