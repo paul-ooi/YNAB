@@ -6,11 +6,13 @@
     "pretty": true,
     "watch":true,
     "watchFile": "useFsEvents",
+    "moduleResolution":"Node",
+    "module":"Node16",
     "esModuleInterop": true,
     "resolveJsonModule": true,
   },
   "files": [
-    "app.ts",
+    "app.js",
   ],
   "watchOptions": {
     "excludeFiles": ["**/node_modules","./dist"]
