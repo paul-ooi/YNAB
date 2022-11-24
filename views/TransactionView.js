@@ -50,24 +50,81 @@ export default class TransactionView {
     return row
   }
 
-  static addListenerOnCheckboxes () {
-    const checkboxes = document.querySelectorAll('[name="select__row"]')
-    checkboxes.forEach((cb)=>{
-      cb.addEventListener('change', ()=>{
-        const selectedChecks = document.querySelectorAll('[name="select__row"]:checked');
-        if (selectedChecks.length === 1) {
+  /**
+   * activate Transaction Modal
+   */
+   static showTransactionForm(){
+    document.querySelector('dialog').showModal()
+  }
+
+  /**
+   * Delete the Buttons that modify the transaction
+   * @param {HTMLInputElement} inputCheckbox HTML Input Checkbox
+   */
+  static deleteTransactionModifyButtons (inputCheckbox) {
+    inputCheckbox.closest('td').querySelectorAll('button').forEach((el) => el.remove());
+  }
+
+  /**
+   * Add button to Remove transaction row
+   * @param {HTMLInputElement} inputCheckbox HTML Input Checkbox
+   */
+  static addTransactionRemovalButton (inputCheckbox) {
+        if ('INPUT' !== inputCheckbox.nodeName && 'checkbox' !== inputCheckbox.type) return;
+        if (inputCheckbox.checked) {
           // Create Remove button
           const delButton = document.createElement('button');
-          delButton.setAttribute('type', 'button')
+          delButton.setAttribute('type', 'button');
+          delButton.classList.add('transaction__remove');
           delButton.textContent = 'Remove Transaction'
           delButton.addEventListener('click', ()=>{
             const body = delButton.closest('tbody');
             body.deleteRow(delButton.dataset.row)
           })
           // Add button to cell
-          const rowIndex = selectedChecks.item(0).closest('tr').rowIndex - 1
+          const rowIndex = inputCheckbox.closest('tr').rowIndex - 1
           delButton.dataset.row = rowIndex;
-          selectedChecks.item(0).closest('td').appendChild(delButton)
+          inputCheckbox.closest('td').appendChild(delButton)
+        }
+  }
+  
+  /**
+   * Add button to Edit transaction row
+   * @param {HTMLInputElement} inputCheckbox HTML Input Checkbox
+   */
+  static addTransactionEditButton (inputCheckbox) {
+        if ('INPUT' !== inputCheckbox.nodeName && 'checkbox' !== inputCheckbox.type) return;
+        if (inputCheckbox.checked) {
+          // Create Edit button
+          const editButton = document.createElement('button');
+          editButton.setAttribute('type', 'button')
+          editButton.classList.add('transaction__edit')
+          editButton.textContent = 'Edit Transaction'
+          editButton.addEventListener('click', ()=>{
+            // Trigger Transaction Edit Dialog
+            this.showTransactionForm()
+          })
+          // Add button to cell
+          const rowIndex = inputCheckbox.closest('tr').rowIndex - 1
+          editButton.dataset.row = rowIndex;
+          inputCheckbox.closest('td').appendChild(editButton)
+        }
+  }
+
+  /**
+   * add change Listener to Transaction checkboxes
+   */
+   static addListenerOnCheckboxes () {
+    const checkboxes = document.querySelectorAll('[name="select__row"]')
+    checkboxes.forEach((cb)=>{
+      cb.addEventListener('change', (event) => {
+        const checkbox = event.target;
+        if ('INPUT' !== checkbox.nodeName && 'checkbox' !== checkbox.type) return;
+        if (checkbox.checked) {
+          this.addTransactionRemovalButton(checkbox)
+          this.addTransactionEditButton(checkbox)
+        } else {
+          this.deleteTransactionModifyButtons(checkbox);
         }
       })
     })
