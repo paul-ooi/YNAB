@@ -22,6 +22,10 @@ export default class TransactionModel {
     }
   }
 
+  /**
+   * Assign properties significant to Single transaction
+   * @param {Object} transactionData object of transaction data from JSON or DB
+   */
   setupSingleTransactionProperties(transactionData){
     this.account = Account.getById(transactionData.from)
     this.payee = Payee.getById(transactionData.to)
@@ -31,6 +35,10 @@ export default class TransactionModel {
     this.amount = transactionData.amount
   }
 
+  /**
+   * Assign properties significant to Multi-split transaction
+   * @param {Object} transactionData object of transaction sata from JSON or DB
+   */
   setupMultiTransactionProperties(transactionData){
     this.account = Account.getById(transactionData.from)
     this.payee = Payee.getById(transactionData.to)
@@ -41,6 +49,10 @@ export default class TransactionModel {
     this.subTransactions = transactionData.subTransactions
   }
 
+  /**
+   * Assign properties significant to Transfer transaction
+   * @param {Object} transactionData object of transaction sata from JSON or DB
+   */
   setupTransferTransactionProperties(transactionData){
     this.account = Account.getById(transactionData.from)
     this.payee = Account.getById(transactionData.to)
