@@ -1,3 +1,4 @@
+import DbModel from './models/DbModel.js';
 import TransactionModel from './models/TransactionModel.js';
 import TransactionView from './views/TransactionView.js';
 // import budgets from './data/budgets.js';
@@ -11,3 +12,7 @@ data.forEach((transaction)=> {
 })
 TransactionView.addListenerOnCheckboxes()
 TransactionView.addCloseListenerTransactionForm()
+
+// debugger;
+const dbModel = new DbModel('wenab', 4)
+dbModel.requestDbOpen();
